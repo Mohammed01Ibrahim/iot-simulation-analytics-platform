@@ -1,0 +1,104 @@
+x-app-env: &app-env
+  HOST: 0.0.0.0
+  MONGO_URL: mongodb://mongodb:27017
+  MONGO_DB: iot_platform
+  AMQP_URL: amqp://iot:${RABBITMQ_PASSWORD:-local-iot-broker}@rabbitmq:5672
+  MQTT_URL: mqtt://rabbitmq:1883
+  MQTT_USERNAME: iot
+  MQTT_PASSWORD: ${RABBITMQ_PASSWORD:-local-iot-broker}
+  MINIO_HOST: minio
+  MINIO_ACCESS_KEY: iotlocal
+  MINIO_SECRET_KEY: ${MINIO_PASSWORD:-local-development-only}
+  HTTP_SINK_URL: http://receiver:4200/ingest
+  API_TOKEN: ${API_TOKEN:-}
+services:
+  mongodb:
+    image: mongo:7.0.14
+    volumes: [mongo-data:/data/db]
+    healthcheck:
+      test: [CMD, mongosh, --quiet, --eval, "db.adminCommand('ping').ok"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+    restart: unless-stopped
+  rabbitmq:
+    image: rabbitmq:4.0.5-management
+    environment:
+      RABBITMQ_DEFAULT_USER: iot
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD:-local-iot-broker}
+    volumes:
+      - rabbit-data:/var/lib/rabbitmq
+      - ./deploy/enabled_plugins:/etc/rabbitmq/enabled_plugins:ro
+      - ./deploy/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf:ro
+    ports: ["127.0.0.1:15672:15672", "127.0.0.1:1883:1883"]
+    healthcheck:
+      test: [CMD, rabbitmq-diagnostics, -q, ping]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+    restart: unless-stopped
+  minio:
+    build:
+      context: .
+      dockerfile: deploy/Minio.Dockerfile
+    environment:
+      MINIO_ROOT_USER: iotlocal
+      MINIO_ROOT_PASSWORD: ${MINIO_PASSWORD:-local-development-only}
+    volumes: [minio-data:/data]
+    ports: ["127.0.0.1:9001:9001"]
+    healthcheck:
+      test: [CMD, curl, -fsS, http://localhost:9000/minio/health/live]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+    restart: unless-stopped
+  receiver:
+    build: .
+    environment: {HOST: 0.0.0.0}
+    command: [node, src/receiver.js]
+    healthcheck:
+      test: [CMD, node, -e, "fetch('http://127.0.0.1:4200/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    restart: unless-stopped
+  api:
+    build: .
+    environment: *app-env
+    ports: ["127.0.0.1:4100:4100"]
+    depends_on:
+      mongodb: {condition: service_healthy}
+      rabbitmq: {condition: service_healthy}
+      minio: {condition: service_healthy}
+    healthcheck:
+      test: [CMD, node, -e, "fetch('http://127.0.0.1:4100/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+    restart: unless-stopped
+  worker:
+    build: .
+    environment: *app-env
+    command: [node, src/worker.js]
+    depends_on:
+      mongodb: {condition: service_healthy}
+      rabbitmq: {condition: service_healthy}
+      minio: {condition: service_healthy}
+      receiver: {condition: service_healthy}
+    restart: unless-stopped
+  tests:
+    profiles: [test]
+    build:
+      context: .
+      dockerfile: deploy/Test.Dockerfile
+    environment:
+      <<: *app-env
+      BASE_URL: http://api:4100
+      RECEIVER_RECORDS_URL: http://receiver:4200/records
+    depends_on:
+      api: {condition: service_healthy}
+    volumes: [./docs/evidence:/app/docs/evidence]
+volumes:
+  mongo-data:
+  rabbit-data:
+  minio-data:

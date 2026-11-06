@@ -1,0 +1,22 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> iot-simulation-analytics-platform@1.0.0 test
+> node --test tests/unit.test.js
+
+✔ random readings obey configured numeric bounds, including fixed values (1.804607ms)
+✔ sine and sequence patterns are deterministic (0.274542ms)
+✔ text, status and UTC timestamp fields retain types (1.410343ms)
+✔ lifecycle rejects invalid transitions and terminal state restarts (0.488624ms)
+✔ device validation rejects unsafe keys, duplicate fields and invalid ranges (3.821446ms)
+✔ CSV replay parses quoted text and finite numbers (2.878862ms)
+✔ CSV rejects empty datasets, duplicate/unsafe headers and malformed records (1.492438ms)
+✔ CSV export quotes cells and neutralizes text formulas (0.403022ms)
+✔ sessions require known delivery targets, unique devices and CSV for replay (0.77198ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 202.5847

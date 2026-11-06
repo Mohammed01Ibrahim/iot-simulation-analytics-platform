@@ -1,0 +1,23 @@
+--- a/cmd/net.go
++++ b/cmd/net.go
+@@ -20,6 +20,7 @@
+ import (
+ 	"errors"
+ 	"net"
++ "os"
+ 	"net/url"
+ 	"runtime"
+ 	"sort"
+@@ -53,7 +54,11 @@
+ 
+ // mustGetLocalIPs returns IPs of local interface
+ func mustGetLocalIPs() (ipList []net.IP) {
+-	ifs, err := net.Interfaces()
++	// Modified 2026-11-06: opt-in loopback discovery for restricted test hosts.
++ if os.Getenv("MINIO_LOOPBACK_ONLY") == "1" {
++ return []net.IP{net.ParseIP("127.0.0.1"), net.ParseIP("::1")}
++ }
++ ifs, err := net.Interfaces()
+ 	logger.FatalIf(err, "Unable to get IP addresses of this host")
+ 
+ 	for _, interf := range ifs {
