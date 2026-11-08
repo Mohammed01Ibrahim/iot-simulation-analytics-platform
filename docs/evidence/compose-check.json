@@ -1,0 +1,14 @@
+{
+  "yamlParse": "passed",
+  "services": [
+    "mongodb",
+    "rabbitmq",
+    "minio",
+    "receiver",
+    "api",
+    "worker",
+    "tests"
+  ],
+  "containerBuild": "not run",
+  "reason": "Docker runtime unavailable"
+}

@@ -1,0 +1,79 @@
+{
+  "startedAt": "2026-11-08T03:56:14.521Z",
+  "environment": "Real MongoDB, RabbitMQ, MinIO, MQTT and HTTP receiver",
+  "checks": [
+    {
+      "name": "service-health",
+      "passed": true,
+      "observedAt": "2026-11-08T03:56:14.633Z",
+      "status": "healthy",
+      "services": {
+        "mongodb": true,
+        "rabbitmq": true,
+        "minio": true,
+        "worker": true,
+        "mqtt": true
+      },
+      "time": "2026-11-08T03:56:14.628Z"
+    },
+    {
+      "name": "device-persistence-and-validation",
+      "passed": true,
+      "observedAt": "2026-11-08T03:56:14.654Z",
+      "deviceId": "936fa92b-38fa-4adb-ab57-7069a6f911e7"
+    },
+    {
+      "name": "end-to-end-delivery",
+      "passed": true,
+      "observedAt": "2026-11-08T03:56:15.380Z",
+      "sampleMessageId": "c7fd68aa-bd75-4abf-ad18-226fdd2d0a01:936fa92b-38fa-4adb-ab57-7069a6f911e7:4",
+      "consumerCount": 1,
+      "mqttObserved": true,
+      "httpObserved": true
+    },
+    {
+      "name": "lifecycle",
+      "passed": true,
+      "observedAt": "2026-11-08T03:56:16.546Z",
+      "pausedPublished": 5
+    },
+    {
+      "name": "deduplication",
+      "passed": true,
+      "observedAt": "2026-11-08T03:56:17.504Z",
+      "records": 6
+    },
+    {
+      "name": "minio-export",
+      "passed": true,
+      "observedAt": "2026-11-08T03:56:17.530Z",
+      "rows": 6,
+      "key": "exports/88ad3c06-385a-4f3e-bfdd-a4f031e26c9d.csv",
+      "bytes": 1160
+    },
+    {
+      "name": "finite-csv-replay",
+      "passed": true,
+      "observedAt": "2026-11-08T03:56:17.847Z",
+      "rows": 2,
+      "datasetKey": "datasets/ff2b541d-3968-4720-886f-87e0fb27737e.csv"
+    },
+    {
+      "name": "session-validation",
+      "passed": true,
+      "observedAt": "2026-11-08T03:56:17.852Z"
+    },
+    {
+      "name": "overview-and-sse",
+      "passed": true,
+      "observedAt": "2026-11-08T03:56:17.866Z",
+      "received": 8
+    },
+    {
+      "name": "snapshot-retention",
+      "passed": true,
+      "observedAt": "2026-11-08T03:56:17.869Z"
+    }
+  ],
+  "finishedAt": "2026-11-08T03:56:17.870Z"
+}

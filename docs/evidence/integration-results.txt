@@ -1,0 +1,25 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> iot-simulation-analytics-platform@1.0.0 test:integration
+> node --env-file-if-exists=.env --test --test-concurrency=1 tests/integration.test.js
+
+.env not found. Continuing without it.
+.env not found. Continuing without it.
+✔ all five connected service health checks are healthy (101.374023ms)
+✔ device CRUD persists to MongoDB and rejects invalid/duplicate input (20.67715ms)
+✔ generation traverses RabbitMQ, MongoDB, MQTT and HTTP (726.052144ms)
+✔ pause stops generation, resume restarts it, stop is terminal (1166.308592ms)
+✔ broker redelivery is deduplicated by stable message ID (957.558792ms)
+✔ CSV export is saved in MinIO and downloads identically (25.745624ms)
+✔ CSV upload persists in MinIO and finite replay completes exactly two rows (316.60266ms)
+✔ unknown devices and malformed CSV are rejected (5.187603ms)
+✔ overview reflects database counts and SSE emits actual snapshots (13.767648ms)
+✔ deleting a stopped device preserves the immutable session snapshot (3.574486ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3510.494014

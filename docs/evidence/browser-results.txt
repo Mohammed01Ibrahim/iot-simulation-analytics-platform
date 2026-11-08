@@ -1,0 +1,16 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> iot-simulation-analytics-platform@1.0.0 test:e2e
+> playwright test
+
+
+Running 2 tests using 1 worker
+
+(node:230) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:230) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/browser/workflow.spec.js:24:1 › create device and control real simulation through the React interface (1.5s)
+  ✓  2 tests/browser/workflow.spec.js:116:1 › analytics filters work and mobile layout fits the viewport (183ms)
+
+  2 passed (2.1s)
