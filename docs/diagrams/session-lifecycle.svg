@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="515pt" height="220pt" viewBox="0 0 515 220" role="img"><style>text{font-family:Montserrat,Arial,sans-serif}text[font-family="semibold"]{font-weight:600}text[font-family="bold"]{font-weight:700}</style>
+<rect x="0" y="0" width="153" height="60" rx="7" fill="#F3F6F8" stroke="#D8E2E8" stroke-width="1"/>
+<text x="13" y="22.648" font-family="semibold" font-size="11" fill="#102A43">Ready</text>
+<text x="13" y="39.5184" font-family="regular" font-size="8.8" fill="#526A7D">Configuration saved</text>
+<rect x="181" y="0" width="153" height="60" rx="7" fill="#E8F5F2" stroke="#008F83" stroke-width="1"/>
+<text x="194" y="22.648" font-family="semibold" font-size="11" fill="#008F83">Running</text>
+<text x="194" y="39.5184" font-family="regular" font-size="8.8" fill="#526A7D">Generate readings</text>
+<rect x="362" y="0" width="153" height="60" rx="7" fill="#F3F6F8" stroke="#D8E2E8" stroke-width="1"/>
+<text x="375" y="22.648" font-family="semibold" font-size="11" fill="#102A43">Paused</text>
+<text x="375" y="39.5184" font-family="regular" font-size="8.8" fill="#526A7D">Scheduling paused</text>
+<rect x="181" y="130" width="153" height="60" rx="7" fill="#F3F6F8" stroke="#D8E2E8" stroke-width="1"/>
+<text x="194" y="152.648" font-family="semibold" font-size="11" fill="#102A43">Stopped</text>
+<text x="194" y="169.51839999999999" font-family="regular" font-size="8.8" fill="#526A7D">Terminal</text>
+<rect x="0" y="130" width="153" height="60" rx="7" fill="#F3F6F8" stroke="#D8E2E8" stroke-width="1"/>
+<text x="13" y="152.648" font-family="semibold" font-size="11" fill="#102A43">Completed</text>
+<text x="13" y="169.51839999999999" font-family="regular" font-size="8.8" fill="#526A7D">Finite CSV finished</text>
+<rect x="362" y="130" width="153" height="60" rx="7" fill="#F3F6F8" stroke="#D8E2E8" stroke-width="1"/>
+<text x="375" y="152.648" font-family="semibold" font-size="11" fill="#102A43">Failed</text>
+<text x="375" y="169.51839999999999" font-family="regular" font-size="8.8" fill="#526A7D">Generation error</text>
+<line x1="155" y1="28" x2="179" y2="28" stroke="#008F83" stroke-width="1.4" />
+<polygon points="179,28 175.58990191176198,30.090748915722635 175.58990191176198,25.909251084277365" fill="#008F83" stroke="none" stroke-width="1"/>
+<text x="158" y="17.808" font-family="regular" font-size="6" fill="#526A7D">start</text>
+<line x1="336" y1="22" x2="360" y2="22" stroke="#008F83" stroke-width="1.4" />
+<polygon points="360,22 356.58990191176196,24.090748915722635 356.58990191176196,19.909251084277365" fill="#008F83" stroke="none" stroke-width="1"/>
+<text x="336" y="12.808" font-family="regular" font-size="6" fill="#526A7D">pause</text>
+<line x1="360" y1="45" x2="336" y2="45" stroke="#008F83" stroke-width="1.4" />
+<polygon points="336,45 339.41009808823804,42.909251084277365 339.41009808823804,47.090748915722635" fill="#008F83" stroke="none" stroke-width="1"/>
+<text x="336" y="65.80799999999999" font-family="regular" font-size="6" fill="#526A7D">resume</text>
+<line x1="258" y1="62" x2="258" y2="128" stroke="#008F83" stroke-width="1.4" />
+<polygon points="258,128 255.90925108427737,124.58990191176198 260.09074891572266,124.58990191176197" fill="#008F83" stroke="none" stroke-width="1"/>
+<text x="264" y="97.776" font-family="regular" font-size="7" fill="#526A7D">stop</text>
+<line x1="438" y1="62" x2="438" y2="105" stroke="#D8E2E8" stroke-width="1" />
+<line x1="438" y1="105" x2="295" y2="105" stroke="#D8E2E8" stroke-width="1" />
+<line x1="295" y1="105" x2="295" y2="128" stroke="#008F83" stroke-width="1.4" />
+<polygon points="295,128 292.90925108427734,124.58990191176198 297.09074891572266,124.58990191176197" fill="#008F83" stroke="none" stroke-width="1"/>
+<line x1="185" y1="62" x2="185" y2="85" stroke="#D8E2E8" stroke-width="1" />
+<line x1="185" y1="85" x2="77" y2="85" stroke="#D8E2E8" stroke-width="1" />
+<line x1="77" y1="85" x2="77" y2="128" stroke="#008F83" stroke-width="1.4" />
+<polygon points="77,128 74.90925108427736,124.58990191176198 79.09074891572264,124.58990191176197" fill="#008F83" stroke="none" stroke-width="1"/>
+<line x1="330" y1="62" x2="330" y2="80" stroke="#D8E2E8" stroke-width="1" />
+<line x1="330" y1="80" x2="506" y2="80" stroke="#D8E2E8" stroke-width="1" />
+<line x1="506" y1="80" x2="506" y2="115" stroke="#D8E2E8" stroke-width="1" />
+<line x1="506" y1="115" x2="438" y2="128" stroke="#008F83" stroke-width="1.4" />
+<polygon points="438,128 440.9568469084616,125.30610758196973 441.7420310394897,129.41322457503958" fill="#008F83" stroke="none" stroke-width="1"/>
+<text x="0" y="209.8408" font-family="regular" font-size="8.1" fill="#526A7D">Ready can also stop. Queued messages may finish after pause/stop.</text>
+</svg>
